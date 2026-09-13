@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./fonts.css";
+
+/*
+ * Map semantic tokens to Tailwind colour utilities. Every value resolves through
+ * an OKLCH triplet defined in tokens.css, so theme switching needs no rebuild.
+ */
+@theme inline {
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --text-xs: var(--text-xs);
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
+  --text-2xl: var(--text-2xl);
+  --text-3xl: var(--text-3xl);
+  --text-4xl: var(--text-4xl);
+  --text-5xl: var(--text-5xl);
+  --text-6xl: var(--text-6xl);
+
+  --color-background: oklch(var(--background));
+  --color-foreground: oklch(var(--foreground));
+
+  --color-surface: oklch(var(--surface));
+  --color-surface-foreground: oklch(var(--surface-foreground));
+
+  --color-card: oklch(var(--card));
+  --color-card-foreground: oklch(var(--card-foreground));
+
+  --color-primary: oklch(var(--primary));
+  --color-primary-foreground: oklch(var(--primary-foreground));
+
+  --color-secondary: oklch(var(--secondary));
+  --color-secondary-foreground: oklch(var(--secondary-foreground));
+
+  --color-muted: oklch(var(--muted));
+  --color-muted-foreground: oklch(var(--muted-foreground));
+
+  --color-accent: oklch(var(--accent));
+  --color-accent-foreground: oklch(var(--accent-foreground));
+
+  --color-border: oklch(var(--border));
+  --color-input: oklch(var(--input));
+  --color-ring: oklch(var(--ring));
+
+  --color-destructive: oklch(var(--destructive));
+  --color-destructive-foreground: oklch(var(--destructive-foreground));
+
+  --color-success: oklch(var(--success));
+  --color-success-foreground: oklch(var(--success-foreground));
+
+  --radius-token: var(--radius);
+}
+
+/*
+ * Motion that answers an action: the Radix Accordion panel grows and shrinks
+ * with the content height Radix exposes. Reduced motion neutralises it globally.
+ */
+@theme {
+  --animate-accordion-down: accordion-down 200ms ease-out;
+  --animate-accordion-up: accordion-up 200ms ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+}
+
+@layer components {
+  /*
+   * Ring ordering motif: a single faint ring anchored to the field, built only
+   * from tokens. Sections opt in by adding the class.
+   */
+  .field-ring {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .field-ring::before {
+    content: "";
+    position: absolute;
+    top: -14rem;
+    right: -10rem;
+    width: 34rem;
+    height: 34rem;
+    border-radius: 9999px;
+    border: var(--ring-width) solid
+      color-mix(in oklab, var(--color-border) 75%, transparent);
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

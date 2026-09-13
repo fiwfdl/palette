@@ -1,0 +1,123 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import StarterPanel from "../components/StarterPanel.tsx";
+
+const stack = [
+  {
+    name: "Astro",
+    body: "Static-first routing and islands, so pages ship as HTML.",
+  },
+  {
+    name: "Tailwind CSS v4",
+    body: "Utility styling wired to the project's semantic tokens.",
+  },
+  {
+    name: "Radix + React",
+    body: "Accessible dialog, tabs, accordion, tooltip, and switch primitives.",
+  },
+];
+---
+
+<BaseLayout>
+  <section class="field-ring relative border-b border-border">
+    <div
+      class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+    >
+      <div>
+        <p
+          class="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground"
+        >
+          Web starter
+        </p>
+        <h1
+          class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl"
+        >
+          Build your next web product.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg text-muted-foreground">
+          A small, opinionated foundation: semantic design tokens, a self-hosted
+          type system, accessible React islands, and a static build. Replace the
+          copy, keep the bones.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href="#get-started"
+            class="inline-flex items-center justify-center rounded-[var(--radius)] bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 active:scale-[0.97] motion-reduce:transition-none"
+          >
+            Get started
+          </a>
+          <a
+            href="#features"
+            class="inline-flex items-center justify-center rounded-[var(--radius)] border border-border bg-surface px-5 py-2.5 text-sm font-medium text-surface-foreground transition hover:bg-muted active:scale-[0.97] motion-reduce:transition-none"
+          >
+            Explore features
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="rounded-[var(--radius)] border border-border bg-card p-6 text-card-foreground"
+      >
+        <p class="font-display text-sm font-semibold tracking-tight">
+          What ships in the box
+        </p>
+        <ul class="mt-4 space-y-3 text-sm text-muted-foreground">
+          <li>Theme bootstrap with light and dark tokens</li>
+          <li>Header, footer, and skip link landmarks</li>
+          <li>Radix Switch theme toggle that persists</li>
+          <li>Static checks wired into CI</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="scroll-mt-24 border-b border-border">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl text-foreground sm:text-4xl">Features</h2>
+        <p class="mt-4 text-lg text-muted-foreground">
+          The pieces most projects rebuild first, already wired together.
+        </p>
+      </div>
+      <div class="mt-12">
+        <StarterPanel client:load />
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="scroll-mt-24 border-b border-border">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl text-foreground sm:text-4xl">Stack</h2>
+        <p class="mt-4 text-lg text-muted-foreground">
+          No framework beyond what the foundation needs.
+        </p>
+      </div>
+      <ul class="mt-12 grid gap-6 sm:grid-cols-3">
+        {
+          stack.map((item) => (
+            <li class="rounded-[var(--radius)] border border-border bg-surface p-6 text-surface-foreground">
+              <h3 class="text-lg font-semibold">{item.name}</h3>
+              <p class="mt-2 text-sm text-muted-foreground">{item.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section id="get-started" class="scroll-mt-24">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl text-foreground sm:text-4xl">Get started</h2>
+        <p class="mt-4 text-lg text-muted-foreground">
+          Use this template, then replace the placeholder branding and copy with
+          your own.
+        </p>
+      </div>
+      <pre
+        class="mt-8 overflow-x-auto rounded-[var(--radius)] border border-border bg-card p-6 text-sm text-card-foreground"><code>npm install
+npm run dev</code></pre>
+    </div>
+  </section>
+</BaseLayout>

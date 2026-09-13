@@ -1,0 +1,58 @@
+---
+import ThemeToggle from "./ThemeToggle.tsx";
+
+const links = [
+  { href: "#features", label: "Features" },
+  { href: "#stack", label: "Stack" },
+  { href: "#get-started", label: "Get started" },
+];
+---
+
+<header
+  id="top"
+  class="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70"
+>
+  <div
+    class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 sm:px-6"
+  >
+    <a
+      href="#top"
+      class="order-1 font-display text-lg font-semibold tracking-tight text-foreground"
+      aria-label="Starter home"
+    >
+      Starter
+    </a>
+
+    <nav
+      aria-label="Primary"
+      class="order-3 w-full md:order-none md:ml-2 md:w-auto md:flex-1"
+    >
+      <ul
+        class="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-muted-foreground"
+      >
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="rounded-sm transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="order-2 ml-auto flex items-center gap-3 md:ml-0">
+      <ThemeToggle client:load />
+      <a
+        href="#get-started"
+        class="inline-flex items-center justify-center rounded-[var(--radius)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 active:scale-[0.97] motion-reduce:transition-none"
+      >
+        Get started
+      </a>
+    </div>
+  </div>
+</header>

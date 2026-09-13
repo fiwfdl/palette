@@ -1,0 +1,43 @@
+---
+const year = new Date().getFullYear();
+
+const links = [
+  { href: "#features", label: "Features" },
+  { href: "#stack", label: "Stack" },
+  { href: "#get-started", label: "Get started" },
+];
+---
+
+<footer class="border-t border-border bg-surface text-surface-foreground">
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between"
+  >
+    <div>
+      <p class="font-display text-base font-semibold tracking-tight">Starter</p>
+      <p class="mt-1 text-sm text-muted-foreground">
+        Build your next web product.
+      </p>
+    </div>
+
+    <nav aria-label="Footer">
+      <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="rounded-sm transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <p class="text-sm text-muted-foreground">
+      &copy; {year} Starter. Placeholder project.
+    </p>
+  </div>
+</footer>
