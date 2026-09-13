@@ -2,9 +2,8 @@
 import ThemeToggle from "./ThemeToggle.tsx";
 
 const links = [
-  { href: "#features", label: "Features" },
-  { href: "#stack", label: "Stack" },
-  { href: "#get-started", label: "Get started" },
+  { href: "#generator", label: "Generator" },
+  { href: "#about", label: "About" },
 ];
 ---
 
@@ -18,9 +17,9 @@ const links = [
     <a
       href="#top"
       class="order-1 font-display text-lg font-semibold tracking-tight text-foreground"
-      aria-label="Starter home"
+      aria-label="Palette home"
     >
-      Starter
+      Palette
     </a>
 
     <nav
@@ -48,7 +47,7 @@ const links = [
     <div class="order-2 ml-auto flex items-center gap-3 md:ml-0">
       <ThemeToggle client:load />
       <a
-        href="#get-started"
+        href="#generator"
         class="inline-flex items-center justify-center rounded-[var(--radius)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 active:scale-[0.97] motion-reduce:transition-none"
       >
         Get started
