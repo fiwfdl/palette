@@ -65,6 +65,11 @@
   --success-foreground: 0.98 0.01 155;
 
   --radius: 0.625rem;
+
+  /* Absolute ink/paper for text placed on generated swatches, so the label
+     keeps its contrast regardless of the active theme. */
+  --ink: 0.16 0.01 260;
+  --paper: 0.99 0.002 250;
 }
 
 .dark {

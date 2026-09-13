@@ -21,9 +21,20 @@ your project's slice history and current status.
 - [x] Static foundation tests (`tests/`).
 - [x] GitHub Actions CI running lint, test, check, and build.
 
+## Done — Palette product
+
+- [x] `src/lib/palette.ts` — seeded, deterministic OKLCH palette generation,
+      lock-preserving regenerate/resize, OKLCH→hex, WCAG contrast, CSS/JSON
+      serialization.
+- [x] `tests/palette.test.mjs` — generation determinism, lock behaviour,
+      contrast extremes and grading, serialization.
+- [x] `PaletteGenerator.tsx` — base-hue and swatch-count controls, lock/unlock,
+      regenerate unlocked only, copy hex / CSS variables / JSON, per-swatch
+      contrast badge, light/dark, keyboard and reduced-motion aware.
+- [x] `index.astro` and branding updated for Palette; new `--ink`/`--paper`
+      swatch-text tokens mapped in `global.css`.
+
 ## Next
 
-- [ ] Replace placeholder branding and copy.
-- [ ] Set your palette in `src/styles/tokens.css`.
 - [ ] Wire the deploy target and repository variables used by
       `.github/workflows/milestone-notify.yml`.

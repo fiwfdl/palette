@@ -52,6 +52,9 @@
   --color-success: oklch(var(--success));
   --color-success-foreground: oklch(var(--success-foreground));
 
+  --color-ink: oklch(var(--ink));
+  --color-paper: oklch(var(--paper));
+
   --radius-token: var(--radius);
 }
 
