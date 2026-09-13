@@ -75,9 +75,21 @@ Art direction (palette, type, grid, motion, motif): [`docs/art-direction.md`](./
 
 ## Deploy
 
-Static output: build `npm run build`, publish `dist`. `scripts/deploy-previews.sh`
-deploys a branch preview when `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`,
-and `GITHUB_TOKEN` are present.
+Static output: build `npm run build`, publish `dist` to Cloudflare Pages.
+
+- **Canonical URL:** <https://palette-aeq.pages.dev>
+- **Cloudflare Pages project:** `palette` (Direct Upload, production branch `main`).
+  The generated project subdomain is `palette-aeq.pages.dev`; it does **not**
+  match the repo or project name, so never derive the host as
+  `<repo>.pages.dev`.
+- **Branch previews:** `https://<branch-slug>.palette-aeq.pages.dev`. Because the
+  project uses Direct Upload (no Cloudflare Git integration), previews are
+  published by `scripts/deploy-previews.sh` (the "Palette preview auto-deploy"
+  routine runs it with `PAGES_PROJECT=palette REPO_SLUG=fiwfdl/palette`).
+- **Milestone comments:** `.github/workflows/milestone-notify.yml` reads the
+  Pages host from the Cloudflare Pages API (`CLOUDFLARE_ACCOUNT_ID` variable and
+  `CLOUDFLARE_API_TOKEN` secret); `vars.PAGES_DOMAIN` overrides it and
+  `palette-aeq.pages.dev` is the fallback.
 
 ## Accessibility & theming contract
 
